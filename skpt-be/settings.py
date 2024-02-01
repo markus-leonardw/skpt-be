@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'testing.wsgi.application'
+WSGI_APPLICATION = 'skpt-be.wsgi.application'
 
 
 # Database
