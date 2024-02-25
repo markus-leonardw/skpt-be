@@ -5,8 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 import requests
 import os
 import json
-from rdflib import Graph, Namespace, Literal, URIRef
-from rdflib.plugins.stores.sparqlstore import SPARQLStore
 from django.middleware import csrf
 
 def read(request):
