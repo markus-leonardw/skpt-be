@@ -1,45 +1,67 @@
-from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-import requests
-import os
-import json
-
-# Create your views here.
-def index(request):
-    return HttpResponse("Hello world")
+from django.views.decorators.csrf import csrf_exempt
+from django.middleware import csrf
+from kurikulum.utils.request.delete_import_request import DeleteRequest
+from kurikulum.utils.request.execute_template_request import ExecuteTemplateRequest
+from kurikulum.utils.request.insert_import_request import InsertRequest
+from kurikulum.utils.request.sparql_query_request import ReadRequest
 
 def read(request):
-    import requests
+    query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX OBE: <http://www.semanticweb.org/ami/ontologies/2024/0/OBE#>
+SELECT ?course WHERE {
+    ?course rdf:type OBE:Course
+} LIMIT 5
+"""
+    read_request = ReadRequest()
+    read_request.set_payload(query)
+    response = read_request.make_request()
+    
+    return HttpResponse(response.text, content_type='application/json')
 
-    url = 'http://localhost:7200/repositories/starwars'
+# for dev use
+def get_csrf_token(request):
+    csrf_token = csrf.get_token(request)
+    return HttpResponse(csrf_token)
 
-    headers = {
-        'Accept': 'application/x-sparqlstar-results+json, application/sparql-results+json;q=0.9, */*;q=0.8',
-        'Accept-Language': 'en-US,en',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        'Origin': 'http://localhost:7200',
-        'Pragma': 'no-cache',
-        'Referer': 'http://localhost:7200/sparql',
-        'Sec-Fetch-Dest': 'empty',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Site': 'same-origin',
-        'Sec-GPC': '1',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'X-GraphDB-Catch': '1000; throw',
-        'X-GraphDB-Repository': 'starwars',
-        'X-GraphDB-Repository-Location': '',
-        'X-GraphDB-Track-Alias': 'query-editor-659336-1705835170684',
-        'X-Requested-With': 'XMLHttpRequest',
-        'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Brave";v="120"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': 'Windows'
-    }
+@csrf_exempt
+def delete_subject(request):
+    if request.POST:
+        subject = request.POST['subject']
 
-    data = 'query=SELECT+%3Fmovie+%3FmovieName+%3FmovieReleaseDate+WHERE+%7B%0A++%3Chttps%3A%2F%2Fswapi.co%2Fvocabulary%2FHuman%3E+%3Chttps%3A%2F%2Fswapi.co%2Fvocabulary%2Ffilm%3E+%3Fmovie+.%0A++%3Fmovie+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23label%3E+%3FmovieName+%3B%0A+++++++++%3Chttps%3A%2F%2Fswapi.co%2Fvocabulary%2FreleaseDate%3E+%3FmovieReleaseDate+.%0A%7D+ORDER+BY+%3FmovieReleaseDate&infer=true&sameAs=true&limit=1001&offset=0'
+        param = {
+            "s": subject
+        }
 
-    response = requests.post(url, headers=headers, data=data)
+        execute_template_request = ExecuteTemplateRequest()
+        execute_template_request.set_payload("delete", param)
 
-    print(response.text)
-    return JsonResponse(response.text, safe=False)
+        response = execute_template_request.make_request()
+
+        return JsonResponse(response.text, status=200, safe=False)
+
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+@csrf_exempt
+def insert(request):
+    data = """
+PREFIX OBE: <http://www.semanticweb.org/ami/ontologies/2024/0/OBE#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+OBE:course_markus_2 rdf:type OBE:Course .
+"""
+
+    import_name = "test_dummy"
+
+    insert_request = InsertRequest()
+    insert_request.set_payload(import_name, data)
+
+    response_insert = insert_request.make_request()
+
+    delete_request = DeleteRequest()
+    delete_request.set_payload(import_name)
+
+    response_delete = delete_request.make_request()
+
+    return JsonResponse(response_insert.text, safe=False)
