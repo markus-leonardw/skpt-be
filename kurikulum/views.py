@@ -1,39 +1,23 @@
-from requests.auth import HTTPBasicAuth
-from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import requests
-import os
-import json
 from django.middleware import csrf
+from kurikulum.utils.request.delete_import_request import DeleteRequest
+from kurikulum.utils.request.execute_template_request import ExecuteTemplateRequest
+from kurikulum.utils.request.insert_import_request import InsertRequest
+from kurikulum.utils.request.sparql_query_request import ReadRequest
 
 def read(request):
-    url = "http://ec2-52-77-76-222.ap-southeast-1.compute.amazonaws.com:7200/repositories/obe"
-
-    payload = {
-        "query": """
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX OBE: <http://www.semanticweb.org/ami/ontologies/2024/0/OBE#>
-            SELECT ?course WHERE {
-                ?course rdf:type OBE:Course
-            } LIMIT 5
-        """,
-        "infer": "true",
-        "sameAs": "true",
-        "limit": 1001,
-        "offset": 0
-    }
-
-    headers = {
-        'Accept': 'application/x-sparqlstar-results+json, application/sparql-results+json;q=0.9, */*;q=0.8',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    }
+    query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX OBE: <http://www.semanticweb.org/ami/ontologies/2024/0/OBE#>
+SELECT ?course WHERE {
+    ?course rdf:type OBE:Course
+} LIMIT 5
+"""
+    read_request = ReadRequest()
+    read_request.set_payload(query)
+    response = read_request.make_request()
     
-    GRAPHDB_USER = 'admin' # os.getenv('GRAPHDB_USER')
-    GRAPHDB_PASSWORD = 'admin' # os.getenv('GRAPHDB_PASSWORD')
-
-    response = requests.request("POST", url, headers=headers, data=payload, auth=HTTPBasicAuth(GRAPHDB_USER, GRAPHDB_PASSWORD))
-
     return HttpResponse(response.text, content_type='application/json')
 
 # for dev use
@@ -41,76 +25,43 @@ def get_csrf_token(request):
     csrf_token = csrf.get_token(request)
     return HttpResponse(csrf_token)
 
-
+@csrf_exempt
 def delete_subject(request):
     if request.POST:
         subject = request.POST['subject']
 
-        url = "http://ec2-52-77-76-222.ap-southeast-1.compute.amazonaws.com:7200/rest/repositories/obe/sparql-templates/execute"
-
-        payload = json.dumps({
-            "templateId": "http://example.com/template#delete",
+        param = {
             "s": subject
-        })
-
-        headers = {
-            'Accept': '*/*',
-            'Content-Type': 'application/json',
         }
 
-        GRAPHDB_USER = 'admin' # os.getenv('GRAPHDB_USER')
-        GRAPHDB_PASSWORD = 'admin' # os.getenv('GRAPHDB_PASSWORD')
+        execute_template_request = ExecuteTemplateRequest()
+        execute_template_request.set_payload("delete", param)
 
-        response = requests.request("POST", url, headers=headers, data=payload, auth=HTTPBasicAuth(GRAPHDB_USER, GRAPHDB_PASSWORD))
+        response = execute_template_request.make_request()
 
         return JsonResponse(response.text, status=200, safe=False)
 
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=405)
 
-
-def update(request):
-    pass
-
+@csrf_exempt
 def insert(request):
-    url = "http://ec2-52-77-76-222.ap-southeast-1.compute.amazonaws.com:7200/rest/repositories/obe/import/upload/text"
+    data = """
+PREFIX OBE: <http://www.semanticweb.org/ami/ontologies/2024/0/OBE#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+OBE:course_markus_2 rdf:type OBE:Course .
+"""
 
-    payload = json.dumps({
-        "name": "dummy3",
-        "status": "DONE",
-        "context": "default",
-        "replaceGraphs": [],
-        "forceSerial": False,
-        "type": "text",
-        "format": "text/turtle",
-        "data": "PREFIX OBE: <http://www.semanticweb.org/ami/ontologies/2024/0/OBE#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nOBE:course_markus rdf:type OBE:Course .",
-        "parserSettings": {
-            "preserveBNodeIds": False,
-            "failOnUnknownDataTypes": False,
-            "verifyDataTypeValues": False,
-            "normalizeDataTypeValues": False,
-            "failOnUnknownLanguageTags": False,
-            "verifyLanguageTags": True,
-            "normalizeLanguageTags": False,
-            "stopOnError": True
-        }
-    })
+    import_name = "test_dummy"
 
+    insert_request = InsertRequest()
+    insert_request.set_payload(import_name, data)
 
-    headers = {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json;charset=UTF-8',
-    }
+    response_insert = insert_request.make_request()
 
-    GRAPHDB_USER = 'admin' # os.getenv('GRAPHDB_USER')
-    GRAPHDB_PASSWORD = 'admin' # os.getenv('GRAPHDB_PASSWORD')
+    delete_request = DeleteRequest()
+    delete_request.set_payload(import_name)
 
+    response_delete = delete_request.make_request()
 
-    response = requests.request("POST", url, headers=headers, data=payload, auth=HTTPBasicAuth(GRAPHDB_USER, GRAPHDB_PASSWORD))
-
-    url = "http://ec2-52-77-76-222.ap-southeast-1.compute.amazonaws.com:7200/rest/repositories/obe/import/upload/status?remove=true"
-
-    payload = "[\"dummy3\"]"
-    response_delete = requests.request("DELETE", url, headers=headers, data=payload, auth=HTTPBasicAuth(GRAPHDB_USER, GRAPHDB_PASSWORD))
-
-    return JsonResponse(response.text, safe=False)
+    return JsonResponse(response_insert.text, safe=False)
