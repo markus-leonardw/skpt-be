@@ -1,6 +1,7 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.middleware import csrf
+from kurikulum.utils.mapper.mapper_service import Mapper
 from kurikulum.utils.request.delete_import_request import DeleteRequest
 from kurikulum.utils.request.execute_template_request import ExecuteTemplateRequest
 from kurikulum.utils.request.insert_import_request import InsertRequest
@@ -65,3 +66,8 @@ OBE:course_markus_2 rdf:type OBE:Course .
     response_delete = delete_request.make_request()
 
     return JsonResponse(response_insert.text, safe=False)
+
+def test(request):
+    mapper = Mapper()
+    ret = mapper.get_study_program_data()
+    return HttpResponse(ret)
