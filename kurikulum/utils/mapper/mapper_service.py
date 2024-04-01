@@ -14,8 +14,6 @@ READ_FILE_DIR = './static/bulk_insert_template_filled.xlsx'
 def load_file():
     try:
         wb = load_workbook(READ_FILE_DIR, data_only=True, read_only=True)
-        print("success!!!")
-
         return wb
     except Exception as e:
         raise IOError(f"got error message: {e}")
@@ -31,6 +29,11 @@ class Mapper:
         self.clo = None
         self.content = None
         self.course = None
+
+    def get_rdf(self, triples):
+        rdf = '\n'.join(' '.join(map(str, triple)) for triple in triples)
+        print(rdf)
+        return rdf
 
     def get_study_program_data(self):
         if self.study_program is None:
