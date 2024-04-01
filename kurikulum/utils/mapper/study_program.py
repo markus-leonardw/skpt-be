@@ -1,7 +1,7 @@
 from openpyxl import Workbook, load_workbook
 from kurikulum.enum.prefix import Prefix
 from kurikulum.enum.worksheet import Worksheet
-from kurikulum.utils.mapper.Node import IRI
+from kurikulum.utils.mapper.IRI import IRI
 
 # study program
 # return list of triple
