@@ -1,4 +1,5 @@
-from openpyxl import Workbook, load_workbook
+from openpyxl import Workbook
+import kurikulum.const.predicate as predicate
 from kurikulum.enum.prefix import Prefix
 from kurikulum.enum.worksheet import Worksheet
 from kurikulum.utils.mapper.IRI import IRI
@@ -12,13 +13,14 @@ def mapping(wb: Workbook):
     iri_curriculum = IRI(Prefix.OBE, 'Curriculum')
 
     for row in ws.iter_rows(min_row=min_row, max_row=max_row, values_only=True):
+        print(row)
         iri_curr = IRI(Prefix.OBE, row[0])
         iri_sp = IRI(Prefix.OBE, row[1])
         iri_name = IRI(Prefix.STRING, row[2])
 
-        curriculum.append([iri_curr, IRI(Prefix.RDF, 'type'), iri_curriculum])
-        curriculum.append([iri_curr, IRI(Prefix.OBE, 'belongsToSP'), iri_sp])
-        curriculum.append([iri_curr, IRI(Prefix.OBE, 'curriculumName'), iri_name])
+        curriculum.append([iri_curr, predicate.TYPE, iri_curriculum])
+        curriculum.append([iri_curr, predicate.BELONGS_TO_SP, iri_sp])
+        curriculum.append([iri_curr, predicate.CURRICULUM_NAME, iri_name])
 
     return curriculum
 
