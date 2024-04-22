@@ -1,12 +1,38 @@
 from kurikulum.enum.prefix import Prefix
 from kurikulum.utils.mapper.IRI import IRI
 
-
+# common
 TYPE = IRI(Prefix.RDF, 'type')
-BELONGS_TO_CURR = IRI(Prefix.OBE, 'belongsToCurr')
 DESCRIPTION = IRI(Prefix.OBE, 'description')
+
+# study program
+SP_NAME = IRI(Prefix.OBE, 'spName')
+FAKULTAS = IRI(Prefix.OBE, 'faculty')
+VISI = IRI(Prefix.OBE, 'vision')
+MISI = IRI(Prefix.OBE, 'mission')
+TUJUAN = IRI(Prefix.OBE, 'objective')
+
+# curriculum
 BELONGS_TO_SP = IRI(Prefix.OBE, 'belongsToSP')
 CURRICULUM_NAME = IRI(Prefix.OBE, 'curriculumName')
-KKNI = IRI(Prefix.OBE, 'kkni')
+
+# program educational objective
+BELONGS_TO_CURR = IRI(Prefix.OBE, 'belongsToCurr')
+
+# peo & plo
+KKNI_RESPONIBILITY = IRI(Prefix.OBE, 'nqfAuthorityResposibility')
+KKNI_KNOWLEDGE = IRI(Prefix.OBE, 'nqfKnowledge')
+KKNI_WORKING = IRI(Prefix.OBE, 'nqfWorkingSkill')
+SNDIKTI_ATTITUDE = IRI(Prefix.OBE, 'nsAttitude')
+SNDIKTI_GENERIC = IRI(Prefix.OBE, 'nsGenericSkill')
+SNDIKTI_KNOWLEDGE = IRI(Prefix.OBE, 'nsKnowledge')
+SNDIKTI_SPECIFIC = IRI(Prefix.OBE, 'nsSpecificSkill')
+
+# program learning outcome
 PLO_PART_OF_PEO = IRI(Prefix.OBE, 'ploPartOfPeo')
+
+# subprogram learning outcome
+SPLO_PART_OF_PLO = IRI(Prefix.OBE, 'sploPartOfPlo')
+
+CODE = IRI(Prefix.OBE, 'code')
 HAS_DOMAIN = IRI(Prefix.OBE, 'hasDomain')
