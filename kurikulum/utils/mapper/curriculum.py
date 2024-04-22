@@ -13,7 +13,6 @@ def mapping(wb: Workbook):
     iri_curriculum = IRI(Prefix.OBE, 'Curriculum')
 
     for row in ws.iter_rows(min_row=min_row, max_row=max_row, values_only=True):
-        print(row)
         iri_curr = IRI(Prefix.OBE, row[0])
         iri_sp = IRI(Prefix.OBE, row[1])
         iri_name = IRI(Prefix.STRING, row[2])
