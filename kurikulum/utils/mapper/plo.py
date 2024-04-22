@@ -17,12 +17,26 @@ def mapping(wb: Workbook):
 
     for row in ws.iter_rows(min_row=min_row, max_row=max_row, values_only=True):
         iri_plo = IRI(Prefix.OBE, row[0])
+        iri_code = IRI(Prefix.STRING, row[0])
         iri_desc = IRI(Prefix.STRING, row[1])
-        iri_kkni = IRI(Prefix.STRING, row[2])
+        iri_kkni_responsibility = IRI(Prefix.STRING, row[2])
+        iri_kkni_knowledge = IRI(Prefix.STRING, row[3])
+        iri_kkni_working = IRI(Prefix.STRING, row[4])
+        iri_sndikti_attitude = IRI(Prefix.STRING, row[5])
+        iri_sndikti_generic = IRI(Prefix.STRING, row[6])
+        iri_sndikti_knowledge = IRI(Prefix.STRING, row[7])
+        iri_sndikti_specific = IRI(Prefix.STRING, row[8])
 
         plo.append([iri_plo, predicate.TYPE, iri_program_learning_outcome])
+        plo.append([iri_plo, predicate.CODE, iri_code])
         plo.append([iri_plo, predicate.DESCRIPTION, iri_desc])
-        plo.append([iri_plo, predicate.KKNI, iri_kkni])
+        plo.append([iri_plo, predicate.KKNI_RESPONIBILITY, iri_kkni_responsibility])
+        plo.append([iri_plo, predicate.KKNI_KNOWLEDGE, iri_kkni_knowledge])
+        plo.append([iri_plo, predicate.KKNI_WORKING, iri_kkni_working])
+        plo.append([iri_plo, predicate.SNDIKTI_ATTITUDE, iri_sndikti_attitude])
+        plo.append([iri_plo, predicate.SNDIKTI_GENERIC, iri_sndikti_generic])
+        plo.append([iri_plo, predicate.SNDIKTI_KNOWLEDGE, iri_sndikti_knowledge])
+        plo.append([iri_plo, predicate.SNDIKTI_SPECIFIC, iri_sndikti_specific])
 
     count_peo = wb['Sheet8']['B3'].value
     count_plo = wb['Sheet8']['B4'].value
@@ -33,7 +47,6 @@ def mapping(wb: Workbook):
     for curr_plo in range(3, count_plo + 3):
         iri_plo = IRI(Prefix.OBE, ws.cell(curr_plo, 1).value)
         for curr_peo in range(2, count_peo + 2):
-            print(f"ini dari {curr_plo}, {curr_peo} yang pertama:", ws.cell(curr_plo, curr_peo).value)
             if ws.cell(curr_plo, curr_peo).value:
                 iri_peo = IRI(Prefix.OBE, ws.cell(2, curr_peo).value)
                 plo.append([iri_plo, predicate.PLO_PART_OF_PEO, iri_peo])
