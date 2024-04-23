@@ -15,7 +15,7 @@ def mapping(wb: Workbook):
     course = []
     iri_course = IRI(Prefix.OBE, 'Course')
 
-    for row in ws.iter_cols(min_row=min_row, max_row=max_row, values_only=True):
+    for row in ws.iter_rows(min_row=min_row, max_row=max_row, values_only=True):
         iri_cr = IRI(Prefix.OBE, row[0])
         iri_code = IRI(Prefix.STRING, row[0])
         iri_clo = IRI(Prefix.OBE, row[1])
