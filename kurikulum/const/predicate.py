@@ -38,6 +38,11 @@ SPLO_PART_OF_PLO = IRI(Prefix.OBE, 'sploPartOfPlo')
 CRITERIA = IRI(Prefix.OBE, 'Criteria')
 CLO_PART_OF_PLO = IRI(Prefix.OBE, 'cloPartOfPlo')
 CLO_PART_OF_SPLO = IRI(Prefix.OBE, 'cloPartOfSplo')
+HAS_CONTENT = IRI(Prefix.OBE, 'hasContent')
+
+# Content
+HAS_KNOW_CAT = IRI(Prefix.OBE, 'hasKnownCat')
+
 
 CODE = IRI(Prefix.OBE, 'code')
 HAS_DOMAIN = IRI(Prefix.OBE, 'hasDomain')
