@@ -9,7 +9,7 @@ from kurikulum.utils.mapper.content import mapping as mapping_content
 from kurikulum.utils.mapper.course import mapping as mapping_course
 
 
-READ_FILE_DIR = './static/bulk_insert_template_filled_v2.xlsx'
+READ_FILE_DIR = './static/dummy_final.xlsx'
 
 def load_file():
     try:
