@@ -30,7 +30,7 @@ def mapping(wb: Workbook):
     count_learning_domain = wb['Sheet8']['B10'].value
 
     ws_learning_domain = wb[Worksheet.LEARNINGDOMAIN.value]
-    iri_learning_domains = [IRI(Prefix.OBE, cell[1]) for cell in ws_learning_domain.iter_rows(min_row=2, max_row=count_learning_domain, values_only=True)]
+    iri_learning_domains = [IRI(Prefix.OBE, cell[1]) for cell in ws_learning_domain.iter_rows(min_row=2, max_row=count_learning_domain + 1, values_only=True)]
 
     ws = wb[Worksheet.CLODOMAIN.value]
 
