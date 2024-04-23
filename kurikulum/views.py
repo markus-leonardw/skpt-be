@@ -90,13 +90,13 @@ def upload_file(request):
         if form.is_valid():
             uploaded_file = form.cleaned_data['file']
             # Define the path to save the uploaded file
-            save_path = os.path.join(settings.STATIC_ROOT, f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}_{uploaded_file.name}")
+            save_path = os.path.join(settings.STATIC_ROOT, "deleteafter.xlsx")
             # Save the uploaded file
             with open(save_path, 'wb+') as destination:
                 for chunk in uploaded_file.chunks():
                     destination.write(chunk)
-            # Optionally, do something with the uploaded file
-            import_file_to_db(save_path)
+                import_file_to_db(save_path)
+
             # Redirect or render a response
             return render(request, 'upload_success.html')
     else:
@@ -115,6 +115,7 @@ def import_file_to_db(file_path):
         insert_request.set_payload(import_name, query)
 
         response_insert = insert_request.make_request()
+        print("response insert:", response_insert.content)
 
         # delete uploaded query
         delete_request = DeleteRequest()
@@ -123,4 +124,9 @@ def import_file_to_db(file_path):
         response_delete = delete_request.make_request()
 
     # Delete the file since it is no longer needed
-    os.remove(file_path)
+    mapper = None
+    try:
+        os.remove(file_path)
+    except OSError as e:
+        # expected
+        pass
