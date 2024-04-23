@@ -15,28 +15,32 @@ def mapping(wb: Workbook):
     plo = []
     iri_program_learning_outcome = IRI(Prefix.OBE, 'ProgramLearningOutcome')
 
-    for row in ws.iter_rows(min_row=min_row, max_row=max_row, values_only=True):
+    for row in ws.iter_rows(min_row=min_row, max_row=max_row, max_col=9, values_only=True):
+        # mandatory field
         iri_plo = IRI(Prefix.OBE, row[0])
         iri_code = IRI(Prefix.STRING, row[0])
         iri_desc = IRI(Prefix.STRING, row[1])
-        iri_kkni_responsibility = IRI(Prefix.STRING, row[2])
-        iri_kkni_knowledge = IRI(Prefix.STRING, row[3])
-        iri_kkni_working = IRI(Prefix.STRING, row[4])
-        iri_sndikti_attitude = IRI(Prefix.STRING, row[5])
-        iri_sndikti_generic = IRI(Prefix.STRING, row[6])
-        iri_sndikti_knowledge = IRI(Prefix.STRING, row[7])
-        iri_sndikti_specific = IRI(Prefix.STRING, row[8])
 
         plo.append([iri_plo, predicate.TYPE, iri_program_learning_outcome])
         plo.append([iri_plo, predicate.CODE, iri_code])
         plo.append([iri_plo, predicate.DESCRIPTION, iri_desc])
-        plo.append([iri_plo, predicate.KKNI_RESPONIBILITY, iri_kkni_responsibility])
-        plo.append([iri_plo, predicate.KKNI_KNOWLEDGE, iri_kkni_knowledge])
-        plo.append([iri_plo, predicate.KKNI_WORKING, iri_kkni_working])
-        plo.append([iri_plo, predicate.SNDIKTI_ATTITUDE, iri_sndikti_attitude])
-        plo.append([iri_plo, predicate.SNDIKTI_GENERIC, iri_sndikti_generic])
-        plo.append([iri_plo, predicate.SNDIKTI_KNOWLEDGE, iri_sndikti_knowledge])
-        plo.append([iri_plo, predicate.SNDIKTI_SPECIFIC, iri_sndikti_specific])
+
+        # nullable field
+        column_to_predicate = {
+            2: predicate.KKNI_RESPONIBILITY,
+            3: predicate.KKNI_KNOWLEDGE,
+            4: predicate.KKNI_WORKING,
+            5: predicate.SNDIKTI_ATTITUDE,
+            6: predicate.SNDIKTI_GENERIC,
+            7: predicate.SNDIKTI_KNOWLEDGE,
+            8: predicate.SNDIKTI_SPECIFIC
+        }
+
+        # Iterate over the relevant columns and append non-null IRIs to plo
+        for column_index, predicate_value in column_to_predicate.items():
+            iri = IRI(Prefix.STRING, row[column_index]) if row[column_index] else None
+            if iri:
+                plo.append([iri_plo, predicate_value, iri])
 
     count_peo = wb['Sheet8']['B3'].value
     count_plo = wb['Sheet8']['B4'].value
