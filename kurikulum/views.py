@@ -109,10 +109,6 @@ def import_file_to_db(file_path):
     query_dict = mapper.construct_all_data()
 
     for class_name, query in query_dict.items():
-        print(class_name)
-        print(query)
-        print("*"*30)
-
         import_name = "test_dummy_1"
 
         insert_request = InsertRequest()
@@ -126,5 +122,5 @@ def import_file_to_db(file_path):
 
         response_delete = delete_request.make_request()
 
-        # Delete the file since it is no longer needed
-        os.remove(file_path)
+    # Delete the file since it is no longer needed
+    os.remove(file_path)
