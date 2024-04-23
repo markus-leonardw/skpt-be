@@ -1,6 +1,3 @@
-from configparser import MAX_INTERPOLATION_DEPTH
-from xml.etree.ElementPath import prepare_predicate
-from networkx import periphery
 from openpyxl import Workbook
 
 import kurikulum.const.predicate as predicate
@@ -13,7 +10,7 @@ def mapping(wb: Workbook):
     ws = wb[Worksheet.CONTENT.value]
 
     min_row = 4
-    max_row = wb['Sheet8']['B7'].value + 3
+    max_row = wb['Sheet8']['B8'].value + 3
 
     content = []
     iri_content = IRI(Prefix.OBE, 'Content')
