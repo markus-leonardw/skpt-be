@@ -43,6 +43,8 @@ HAS_CONTENT = IRI(Prefix.OBE, 'hasContent')
 # Content
 HAS_KNOW_CAT = IRI(Prefix.OBE, 'hasKnownCat')
 
+# Course
+HAS_CLO = IRI(Prefix.OBE, 'hasCLO')
 
 CODE = IRI(Prefix.OBE, 'code')
 HAS_DOMAIN = IRI(Prefix.OBE, 'hasDomain')
