@@ -34,5 +34,10 @@ PLO_PART_OF_PEO = IRI(Prefix.OBE, 'ploPartOfPeo')
 # subprogram learning outcome
 SPLO_PART_OF_PLO = IRI(Prefix.OBE, 'sploPartOfPlo')
 
+# course learning outcome
+CRITERIA = IRI(Prefix.OBE, 'Criteria')
+CLO_PART_OF_PLO = IRI(Prefix.OBE, 'cloPartOfPlo')
+CLO_PART_OF_SPLO = IRI(Prefix.OBE, 'cloPartOfSplo')
+
 CODE = IRI(Prefix.OBE, 'code')
 HAS_DOMAIN = IRI(Prefix.OBE, 'hasDomain')
