@@ -18,5 +18,6 @@ class Worksheet(Enum):
     CLOSPLO = 'Padanan CLO dengan SubPLO'
 
     LEARNINGDOMAIN = 'Learning Domain'
+    KNOWLEDGECATEGORY = 'Knowledge Category'
     COUNT = 'Sheet8'
     
