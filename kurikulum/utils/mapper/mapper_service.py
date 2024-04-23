@@ -9,7 +9,7 @@ from kurikulum.utils.mapper.content import mapping as mapping_content
 from kurikulum.utils.mapper.course import mapping as mapping_course
 
 
-READ_FILE_DIR = './static/bulk_insert_template_filled.xlsx'
+READ_FILE_DIR = './static/dummy_final.xlsx'
 
 def load_file():
     try:
@@ -29,10 +29,16 @@ class Mapper:
         self.clo = None
         self.content = None
         self.course = None
+        
+    def construct_insert_query(self, triples):
+        template = '''
+PREFIX OBE: <http://www.semanticweb.org/ami/ontologies/2024/0/OBE#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+'''
+        return template + self.get_rdf(triples)
 
     def get_rdf(self, triples):
-        rdf = '\n'.join(' '.join(map(str, triple)) for triple in triples)
-        print(rdf)
+        rdf = '\n'.join(f"{' '.join(map(str, triple))} ." for triple in triples)
         return rdf
 
     def get_study_program_data(self):

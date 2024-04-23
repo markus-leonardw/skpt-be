@@ -16,4 +16,8 @@ class Worksheet(Enum):
     CLODOMAIN = 'Padanan CLO dan Domain'
     CLOPLO = 'Padanana CLO dengan PLO'
     CLOSPLO = 'Padanan CLO dengan SubPLO'
+
+    LEARNINGDOMAIN = 'Learning Domain'
+    KNOWLEDGECATEGORY = 'Knowledge Category'
+    COUNT = 'Sheet8'
     
