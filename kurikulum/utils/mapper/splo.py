@@ -30,7 +30,7 @@ def mapping(wb: Workbook):
     count_learning_domain = wb['Sheet8']['B10'].value
 
     ws_learning_domain = wb[Worksheet.LEARNINGDOMAIN.value]
-    iri_learning_domains = [IRI(Prefix.OBE, cell[1]) for cell in ws_learning_domain.iter_rows(min_row=2, max_row=count_learning_domain, values_only=True)]
+    iri_learning_domains = [IRI(Prefix.OBE, cell[1]) for cell in ws_learning_domain.iter_rows(min_row=2, max_row=count_learning_domain + 1, values_only=True)]
 
     ws = wb[Worksheet.SPLODOMAIN.value]
 
@@ -38,6 +38,6 @@ def mapping(wb: Workbook):
         iri_splo = IRI(Prefix.OBE, ws.cell(curr_splo, 1).value)
         for curr_ld in range(2, count_learning_domain + 2):
             if ws.cell(curr_splo, curr_ld).value:
-                splo.append([iri_plo, predicate.HAS_DOMAIN, iri_learning_domains[curr_ld - 2]])   
+                splo.append([iri_splo, predicate.HAS_DOMAIN, iri_learning_domains[curr_ld - 2]])   
 
     return splo
