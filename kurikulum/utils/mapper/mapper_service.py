@@ -10,17 +10,11 @@ from kurikulum.utils.mapper.course import mapping as mapping_course
 
 
 READ_FILE_DIR = './static/dummy_final.xlsx'
-
-def load_file():
-    try:
-        wb = load_workbook(READ_FILE_DIR, data_only=True, read_only=True)
-        return wb
-    except Exception as e:
-        raise IOError(f"got error message: {e}")
     
 class Mapper:
-    def __init__(self):
-        self.wb = load_file()
+    def __init__(self, file_path):
+        self.file_path = file_path
+        self.wb = self.load_file()
         self.study_program = None
         self.curriculum = None
         self.peo = None
@@ -29,6 +23,13 @@ class Mapper:
         self.clo = None
         self.content = None
         self.course = None
+
+    def load_file(self):
+        try:
+            wb = load_workbook(self.file_path, data_only=True, read_only=True)
+            return wb
+        except Exception as e:
+            raise IOError(f"got error message: {e}")
         
     def construct_insert_query(self, triples):
         template = '''
@@ -80,3 +81,40 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         if self.course is None:
             self.course = mapping_course(self.wb)
         return self.course
+    
+    def construct_all_data(self):
+        study_program = self.get_study_program_data()
+        study_program_query = self.construct_insert_query(study_program)
+
+        curriculum = self.get_curriculum_data()
+        curriculum_query = self.construct_insert_query(curriculum)
+
+        peo = self.get_peo_data()
+        peo_query = self.construct_insert_query(peo)
+
+        plo = self.get_plo_data()
+        plo_query = self.construct_insert_query(plo)
+
+        splo = self.get_splo_data()
+        splo_query = self.construct_insert_query(splo)
+
+        clo = self.get_clo_data()
+        clo_query = self.construct_insert_query(clo)
+
+        content = self.get_content_data()
+        content_query = self.construct_insert_query(content)
+
+        course = self.get_course_data()
+        course_query = self.construct_insert_query(course)
+
+        return {
+        "study_program": study_program_query,
+        "curriculum": curriculum_query,
+        "peo": peo_query,
+        "plo": plo_query,
+        "splo": splo_query,
+        "clo": clo_query,
+        "content": content_query,
+        "course": course_query
+    }
+

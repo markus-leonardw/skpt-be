@@ -53,7 +53,7 @@ def delete_subject(request):
 
 @csrf_exempt
 def insert(request):
-    mapper = Mapper()
+    mapper = Mapper('dummy')
     ret = mapper.get_curriculum_data()
     insert_query = mapper.construct_insert_query(ret)
 
@@ -72,7 +72,7 @@ def insert(request):
     return JsonResponse(response_insert.text, safe=False)
 
 def test(request):
-    mapper = Mapper()
+    mapper = Mapper('dummy')
     ret = mapper.get_course_data()
     print(mapper.construct_insert_query(ret))
     return HttpResponse(mapper.construct_insert_query(ret))
@@ -96,8 +96,32 @@ def upload_file(request):
                 for chunk in uploaded_file.chunks():
                     destination.write(chunk)
             # Optionally, do something with the uploaded file
+            import_file_to_db(save_path)
             # Redirect or render a response
             return render(request, 'upload_success.html')
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
+
+def import_file_to_db(file_path):
+    mapper = Mapper(file_path)
+
+    query_dict = mapper.construct_all_data()
+
+    for class_name, query in query_dict.items():
+        print(class_name)
+        print(query)
+        print("*"*30)
+
+        import_name = "test_dummy_1"
+
+        insert_request = InsertRequest()
+        insert_request.set_payload(import_name, query)
+
+        response_insert = insert_request.make_request()
+
+        # delete uploaded query
+        delete_request = DeleteRequest()
+        delete_request.set_payload(import_name)
+
+        response_delete = delete_request.make_request()
