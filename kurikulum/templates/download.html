@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Template</title>
+</head>
+<body>
+    <h1>Download Template</h1>
+    <p>Click the button below to download the template Excel file.</p>
+    <form action="{% url 'download_template' %}" method="get">
+        <button type="submit">Download Template</button>
+    </form>
+    <p>Alternatively, the template can be accessed <a href="https://docs.google.com/spreadsheets/d/1R9PtFPheS3DR1O2iUYz-oIrJAG8pwyYUfXljlLVq1zA/edit#gid=1568825378" target="_blank">here</a>.</p>
+</body>
+</html>
