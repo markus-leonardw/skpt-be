@@ -109,7 +109,7 @@ def import_file_to_db(file_path):
     query_dict = mapper.construct_all_data()
 
     for class_name, query in query_dict.items():
-        import_name = "test_dummy_1"
+        import_name = "dummy_2" + str(datetime.now()).replace(' ', '_')
 
         insert_request = InsertRequest()
         insert_request.set_payload(import_name, query)
