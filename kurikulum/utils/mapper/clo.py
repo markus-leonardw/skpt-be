@@ -18,8 +18,8 @@ def mapping(wb: Workbook):
     for row in ws.iter_rows(min_row=min_row, max_row=max_row, values_only=True):
         iri_clo = IRI(Prefix.OBE, row[0])
         iri_code = IRI(Prefix.STRING, row[0])
-        iri_criteria = IRI(Prefix.OBE, row[1])
-        iri_desc = IRI(Prefix.OBE, row[2])
+        iri_criteria = IRI(Prefix.STRING, row[1])
+        iri_desc = IRI(Prefix.STRING, row[2])
 
         clo.append([iri_clo, predicate.TYPE, iri_course_learning_outcome])
         clo.append([iri_clo, predicate.CODE, iri_code])

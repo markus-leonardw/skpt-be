@@ -31,8 +31,8 @@ def mapping(wb: Workbook):
             3: predicate.KKNI_KNOWLEDGE,
             4: predicate.KKNI_WORKING,
             5: predicate.SNDIKTI_ATTITUDE,
-            6: predicate.SNDIKTI_GENERIC,
-            7: predicate.SNDIKTI_KNOWLEDGE,
+            6: predicate.SNDIKTI_KNOWLEDGE,
+            7: predicate.SNDIKTI_GENERIC,
             8: predicate.SNDIKTI_SPECIFIC
         }
 

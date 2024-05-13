@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 from django.conf import settings
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
@@ -9,6 +10,7 @@ import os
 from kurikulum.utils.mapper.mapper_service import Mapper
 from kurikulum.utils.request.delete_import_request import DeleteRequest
 from kurikulum.utils.request.execute_template_request import ExecuteTemplateRequest
+from kurikulum.utils.request.get_all_stored_query_request import GetQueryRequest
 from kurikulum.utils.request.insert_import_request import InsertRequest
 from kurikulum.utils.request.sparql_query_request import ReadRequest
 from .forms import UploadFileForm
@@ -26,6 +28,13 @@ SELECT ?course WHERE {
     response = read_request.make_request()
     
     return HttpResponse(response.text, content_type='application/json')
+
+def execute_query(query):
+    read_request = ReadRequest()
+    read_request.set_payload(query)
+    response = read_request.make_request()
+    
+    return json.loads(response.text)
 
 # for dev use
 def get_csrf_token(request):
@@ -109,7 +118,7 @@ def import_file_to_db(file_path):
     query_dict = mapper.construct_all_data()
 
     for class_name, query in query_dict.items():
-        import_name = "dummy_2" + str(datetime.now()).replace(' ', '_')
+        import_name = class_name + '_' + str(datetime.now()).replace(' ', '_')
 
         insert_request = InsertRequest()
         insert_request.set_payload(import_name, query)
@@ -130,3 +139,37 @@ def import_file_to_db(file_path):
     except OSError as e:
         # expected
         pass
+
+def validasi_page(request):
+    queries = get_saved_queries()
+    context = {
+        'queries': queries
+    }
+    if request.method == 'POST':
+        query_name = request.POST.get('dropdown')
+        query = get_saved_queries(query_name)['body']
+        print(query)
+        result = execute_query(query)
+
+        head = result['head']['vars']
+        bindings = result['results']['bindings']
+
+        context['head'] = head
+
+        data = []
+        for row in bindings:
+            data.append([])
+            for col in head:
+                data[-1].append(row[col] if col in row else '')
+        
+        context['data'] = data
+
+        return render(request, 'validasi.html', context)
+    
+    return render(request, 'validasi.html', context)
+
+def get_saved_queries(name = None):
+    get_query_request = GetQueryRequest(name)
+    response = get_query_request.make_request()
+
+    return json.loads(response.text)
