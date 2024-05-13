@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block header %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropdown Form with Bootstrap</title>
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Select an option:</h2>
+  <form action="validasi" method="post">
+      {% csrf_token %}
+      <div class="input-group mb-3">
+          <select class="form-select" name="dropdown" aria-label="Select an option">
+              {% for query in queries %}
+                <option value="{{ query.name }}">{{ query.name }}</option>
+              {% endfor %}
+          </select>
+          <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+  </form>
+
+  <div class="container">
+    <h2>Hasil Query</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          {% for var in head %}
+            <th scope="col">{{ var }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+          <tr>
+            <!-- Loop through the keys of each item in the binding dictionary -->
+            {% for value in row %}
+              <!-- Access the value using dot notation -->
+              <td>{{ value.value }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+
+</div>
+{% endblock %}
