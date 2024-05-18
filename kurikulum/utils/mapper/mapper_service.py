@@ -108,13 +108,13 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         course_query = self.construct_insert_query(course)
 
         return {
-        "study_program": study_program_query,
-        "curriculum": curriculum_query,
-        "peo": peo_query,
-        "plo": plo_query,
-        "splo": splo_query,
-        "clo": clo_query,
-        "content": content_query,
-        "course": course_query
-    }
+            "study_program": study_program_query,
+            "curriculum": curriculum_query,
+            "peo": peo_query,
+            "plo": plo_query,
+            "splo": splo_query,
+            "clo": clo_query,
+            "content": content_query,
+            "course": course_query
+        }
 

@@ -7,7 +7,8 @@ class DBRequest:
         self.url = url
         self.method = method
         self.headers = headers
-        self.__auth = HTTPBasicAuth("admin", "admin")
+        self.payload = None
+        self.__auth = HTTPBasicAuth("obe", "passwordobe")
 
     def set_payload(self, payload):
         self.payload = payload

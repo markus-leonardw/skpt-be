@@ -9,5 +9,6 @@ urlpatterns = [
     path('insert', views.insert),
     path('download', views.download_template_display),
     path('upload', views.upload_file),
-    path('download_template', views.download_template, name='download_template')
+    path('download_template', views.download_template, name='download_template'),
+    path('validasi', views.validasi_page)
 ]

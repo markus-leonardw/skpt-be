@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html' %}
+{% block header %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload File</title>
-</head>
-<body>
+{% endblock %}
+{% block content %}
     <h1>Upload File</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Upload File</button>
     </form>
-</body>
-</html>
+    <p>Untuk template terupdate, lebih disarankan untuk mengisi dari link <a href="https://docs.google.com/spreadsheets/d/1R9PtFPheS3DR1O2iUYz-oIrJAG8pwyYUfXljlLVq1zA/edit#gid=1568825378" target="_blank">template_sheet</a>.</p>
+{% endblock %}
