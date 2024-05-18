@@ -148,7 +148,6 @@ def validasi_page(request):
     if request.method == 'POST':
         query_name = request.POST.get('dropdown')
         query = get_saved_queries(query_name)['body']
-        print(query)
         result = execute_query(query)
 
         head = result['head']['vars']
@@ -160,9 +159,10 @@ def validasi_page(request):
         for row in bindings:
             data.append([])
             for col in head:
-                data[-1].append(row[col] if col in row else '')
+                data[-1].append(row[col]['value'].split('#')[-1] if col in row else '')
         
         context['data'] = data
+        context['query_name'] = query_name
 
         return render(request, 'validasi.html', context)
     

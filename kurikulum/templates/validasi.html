@@ -20,7 +20,7 @@
   </form>
 
   <div class="container">
-    <h2>Hasil Query</h2>
+    <h2>Hasil Query : {{ query_name }}</h2>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -35,7 +35,7 @@
             <!-- Loop through the keys of each item in the binding dictionary -->
             {% for value in row %}
               <!-- Access the value using dot notation -->
-              <td>{{ value.value }}</td>
+              <td>{{ value }}</td>
             {% endfor %}
           </tr>
         {% endfor %}
