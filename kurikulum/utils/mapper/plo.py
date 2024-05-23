@@ -27,9 +27,9 @@ def mapping(wb: Workbook):
 
         # nullable field
         column_to_predicate = {
-            2: predicate.KKNI_RESPONIBILITY,
-            3: predicate.KKNI_KNOWLEDGE,
-            4: predicate.KKNI_WORKING,
+            2: predicate.KKNI_KNOWLEDGE,
+            3: predicate.KKNI_WORKING,
+            4: predicate.KKNI_RESPONIBILITY,
             5: predicate.SNDIKTI_ATTITUDE,
             6: predicate.SNDIKTI_KNOWLEDGE,
             7: predicate.SNDIKTI_GENERIC,

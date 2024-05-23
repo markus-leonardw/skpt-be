@@ -2,15 +2,16 @@
 {% block header %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dropdown Form with Bootstrap</title>
+<title>Validasi</title>
 {% endblock %}
 {% block content %}
 <div class="container mt-5">
   <h2>Select an option:</h2>
-  <form action="validasi" method="post">
+  <form id="queryForm" action="validasi" method="post">
       {% csrf_token %}
       <div class="input-group mb-3">
-          <select class="form-select" name="dropdown" aria-label="Select an option">
+          <select id="queryDropdown" class="form-select" name="dropdown" aria-label="Select an option">
+              <option value="" selected disabled>sila pilih kueri</option>
               {% for query in queries %}
                 <option value="{{ query.name }}">{{ query.name }}</option>
               {% endfor %}
@@ -42,8 +43,30 @@
       </tbody>
     </table>
   </div>
-
-
-
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('queryForm').addEventListener('submit', function (event) {
+      var dropdown = document.getElementById('queryDropdown');
+      if (dropdown.value === "") {
+        event.preventDefault();
+        dropdown.classList.add('is-invalid');
+        if (!document.getElementById('invalid-feedback')) {
+          var invalidFeedback = document.createElement('div');
+          invalidFeedback.id = 'invalid-feedback';
+          invalidFeedback.className = 'invalid-feedback';
+          invalidFeedback.innerText = 'Pilih kueri terlebih dahulu sebelum melakukan submit';
+          dropdown.parentNode.appendChild(invalidFeedback);
+        }
+      } else {
+        dropdown.classList.remove('is-invalid');
+        var feedback = document.getElementById('invalid-feedback');
+        if (feedback) {
+          feedback.remove();
+        }
+      }
+    });
+  });
+</script>
 {% endblock %}

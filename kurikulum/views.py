@@ -94,23 +94,26 @@ def download_template_display(request):
     return render(request, 'download.html')
 
 def upload_file(request):
+    success = None
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            uploaded_file = form.cleaned_data['file']
-            # Define the path to save the uploaded file
-            save_path = os.path.join(settings.STATIC_ROOT, "deleteafter.xlsx")
-            # Save the uploaded file
-            with open(save_path, 'wb+') as destination:
-                for chunk in uploaded_file.chunks():
-                    destination.write(chunk)
-                import_file_to_db(save_path)
+            try:
+                uploaded_file = form.cleaned_data['file']
+                save_path = os.path.join(settings.STATIC_ROOT, "deleteafter.xlsx")
+                with open(save_path, 'wb+') as destination:
+                    for chunk in uploaded_file.chunks():
+                        destination.write(chunk)
+                    import_file_to_db(save_path)
 
-            # Redirect or render a response
-            return render(request, 'upload_success.html')
+                success = True
+            except:
+                success = False
+        else:
+            success = False
     else:
         form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
+    return render(request, 'upload.html', {'form': form, 'success': success})
 
 def import_file_to_db(file_path):
     mapper = Mapper(file_path)
@@ -153,7 +156,7 @@ def validasi_page(request):
         head = result['head']['vars']
         bindings = result['results']['bindings']
 
-        context['head'] = head
+        context['head'] = [col.replace('_', ' ') for col in head]
 
         data = []
         for row in bindings:
