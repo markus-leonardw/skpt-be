@@ -4,7 +4,7 @@ from kurikulum.utils.request.db_request import DBRequest
 
 class DeleteRequest(DBRequest):
     def __init__(self) -> None:
-        url = "http://ec2-52-77-76-222.ap-southeast-1.compute.amazonaws.com:7200/rest/repositories/obe/import/upload/status?remove=true"
+        url = "rest/repositories/obe/import/upload/status?remove=true"
         method = "DELETE"
         headers = {
             'Accept': 'application/json, text/plain, */*',

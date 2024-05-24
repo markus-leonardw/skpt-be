@@ -4,7 +4,7 @@ from kurikulum.utils.request.db_request import DBRequest
 
 class ReadRequest(DBRequest):
     def __init__(self) -> None:
-        url = "http://ec2-52-77-76-222.ap-southeast-1.compute.amazonaws.com:7200/repositories/obe"
+        url = "repositories/obe"
         method = "POST"
         headers = {
             'Accept': 'application/x-sparqlstar-results+json, application/sparql-results+json;q=0.9, */*;q=0.8',

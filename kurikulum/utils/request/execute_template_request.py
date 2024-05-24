@@ -4,7 +4,7 @@ from kurikulum.utils.request.db_request import DBRequest
 
 class ExecuteTemplateRequest(DBRequest):
     def __init__(self) -> None:
-        url = "http://ec2-52-77-76-222.ap-southeast-1.compute.amazonaws.com:7200/rest/repositories/obe/sparql-templates/execute"
+        url = "rest/repositories/obe/sparql-templates/execute"
         method = "POST"
         headers = {
             'Accept': '*/*',
