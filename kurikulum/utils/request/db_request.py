@@ -1,7 +1,7 @@
 from requests.auth import HTTPBasicAuth
 import requests
 
-BASE_URL = 'https://educationontology.cs.ui.ac.id/'
+BASE_URL = 'http//localhost'
 
 class DBRequest:
     def __init__(self, url, method, headers) -> None:
