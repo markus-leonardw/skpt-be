@@ -2,7 +2,7 @@ from datetime import datetime
 import json
 from django.conf import settings
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.middleware import csrf
 from django.http import FileResponse
@@ -40,6 +40,9 @@ def execute_query(query):
 def get_csrf_token(request):
     csrf_token = csrf.get_token(request)
     return HttpResponse(csrf_token)
+
+def redirect_to_validasi(request):
+    return redirect('validasi')
 
 @csrf_exempt
 def delete_subject(request):
