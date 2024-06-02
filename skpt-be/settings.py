@@ -26,6 +26,24 @@ SECRET_KEY = 'django-insecure-x_y!w=sra#lo+9)nld9@cvjed@cu%9@1(6i3mxttgki1d2wr#2
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'log/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 ALLOWED_HOSTS = ['34.168.183.49', 'localhost', 'ec2-47-128-94-165.ap-southeast-1.compute.amazonaws.com', 'educationontology.cs.ui.ac.id']
 

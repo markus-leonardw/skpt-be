@@ -7,6 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.middleware import csrf
 from django.http import FileResponse
 import os
+
+from openpyxl import load_workbook
 from kurikulum.utils.mapper.mapper_service import Mapper
 from kurikulum.utils.request.delete_import_request import DeleteRequest
 from kurikulum.utils.request.execute_template_request import ExecuteTemplateRequest
@@ -14,6 +16,8 @@ from kurikulum.utils.request.get_all_stored_query_request import GetQueryRequest
 from kurikulum.utils.request.insert_import_request import InsertRequest
 from kurikulum.utils.request.sparql_query_request import ReadRequest
 from .forms import UploadFileForm
+
+DATA_FILE_PATH = "static/data.xlsx"
 
 def read(request):
     query = """
@@ -119,7 +123,10 @@ def upload_file(request):
     return render(request, 'upload.html', {'form': form, 'success': success})
 
 def import_file_to_db(file_path):
-    mapper = Mapper(file_path)
+    wb = load_workbook(file_path, data_only=True)
+    wb.save(DATA_FILE_PATH)
+
+    mapper = Mapper(DATA_FILE_PATH)
 
     query_dict = mapper.construct_all_data()
 
@@ -144,6 +151,7 @@ def import_file_to_db(file_path):
         os.remove(file_path)
     except OSError as e:
         # expected
+        print("failed to delete file")
         pass
 
 def validasi_page(request):
