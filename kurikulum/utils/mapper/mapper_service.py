@@ -8,9 +8,6 @@ from kurikulum.utils.mapper.clo import mapping as mapping_clo
 from kurikulum.utils.mapper.content import mapping as mapping_content
 from kurikulum.utils.mapper.course import mapping as mapping_course
 
-
-READ_FILE_DIR = './static/dummy_final.xlsx'
-    
 class Mapper:
     def __init__(self, file_path):
         self.file_path = file_path
