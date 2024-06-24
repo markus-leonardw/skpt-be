@@ -1,0 +1,1546 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V2/"
+     xml:base="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V2/"
+     xmlns:OBE="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:OBE_Ont_V3="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V3#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#allignWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#allignWith"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#belongsToCurr -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#belongsToCurr">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasPEO"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#belongsToSP -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#belongsToSP">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCurriculum"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#StudyProgram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#coveredInCourse -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#coveredInCourse">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#coversContent"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Content"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#coversContent -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#coversContent">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Content"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCLO -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCLO">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#includedInCourse"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CourseLearningOutcome"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCondition -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCondition">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#UnitLearningOutcome"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCourse -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCourse">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#includedInCurr"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCriteria -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCriteria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#UnitLearningOutcome"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Criteria"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCurriculum -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasCurriculum">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#StudyProgram"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasDomain -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasDomain">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningDomain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasPEO -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasPEO">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasPart">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#partOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasPerformance -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasPerformance">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CourseLearningOutcome"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#UnitLearningOutcome"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#includedInCourse -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#includedInCourse">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CourseLearningOutcome"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#includedInCurr -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#includedInCurr">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#partOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#partOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ploHasCourse -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ploHasCourse">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#satisfies -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#satisfies">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CourseLearningOutcome"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#UnitLearningOutcome"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Content"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#action -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#action">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#awardedDegree -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#awardedDegree">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#code -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#code">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CourseLearningOutcome"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#UnitLearningOutcome"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment>Identifier that uniquely identifies a course or a learning object</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#condition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#condition">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#courseName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#courseName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Official name of a course</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#courseType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#courseType"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#credit -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#credit"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#criteria -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#criteria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#currStartDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#currStartDate"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#curriculumName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#curriculumName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Official name of curriculum, example: Curriculum of Computer Science UI Year 2020</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#degreeLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#degreeLevel"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#description -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#description">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Description of a concept such as:
+* Course</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#label -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#label">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Content"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CourseLearningOutcome"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>the name of a learning outcome or a topic or a content</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#mission -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#mission"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nqfAuthorityResposibility -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nqfAuthorityResposibility"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nqfKnowledge -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nqfKnowledge"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nqfWorkingSkill -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nqfWorkingSkill"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nsAttitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nsAttitude"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nsGenericSkill -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nsGenericSkill">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nsKnowledge -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nsKnowledge">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">National Standard of Knowledge</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nsSpecificSkill -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#nsSpecificSkill">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#spName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#spName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#StudyProgram"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Official name of Study Program</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#totalCredit -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#totalCredit"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#vision -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#vision"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#AffectiveDomain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#AffectiveDomain">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#AssesmentTask -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#AssesmentTask"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CognitiveDomain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CognitiveDomain">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningDomain"/>
+        <rdfs:comment>Cognitive domain refer to Revised Bloom Taxonomy (David Krathwohl, Lorin Anderson, 2001)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Content -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Content">
+        <rdfs:comment>A subject of study, or topic or small pieces from body of knowledge that could be organized into course and covered during lessons</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CourseLearningOutcome -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CourseLearningOutcome">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Criteria -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Criteria"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum">
+        <rdfs:comment>A curriculum is a comprehensive plan that outlines all the courses, subjects, and educational experiences that students are expected to engage with during their academic journey</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#KnowledgeCategory -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#KnowledgeCategory"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningDomain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningDomain"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PsychomotoricDomain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PsychomotoricDomain">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#StudyProgram -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#StudyProgram"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#TeachingLearningActivity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#TeachingLearningActivity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#UnitLearningOutcome -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#UnitLearningOutcome">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#LearningOutcome"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Analisis_Kebijakan_Publik -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Analisis_Kebijakan_Publik">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Analisis_Kualitatif_DK -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Analisis_Kualitatif_DK">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Analisis_n_Teknik_Demografi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Analisis_n_Teknik_Demografi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C1_Remember -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C1_Remember">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CognitiveDomain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C2_Understand -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C2_Understand">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CognitiveDomain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C3_Apply -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C3_Apply">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CognitiveDomain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C4_Analyse -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C4_Analyse">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CognitiveDomain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C5_Evaluate -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C5_Evaluate">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CognitiveDomain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C6_Create -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C6_Create">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#CognitiveDomain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Conceptual -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Conceptual">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#KnowledgeCategory"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ek_Keu_Internasional -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ek_Keu_Internasional">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonometrika_CSPD -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonometrika_CSPD">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonometrika_TS -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonometrika_TS">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Digital -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Digital">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Industri -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Industri">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Internasional -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Internasional">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Internasional_Lanjut -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Internasional_Lanjut">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Kependudukan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Kependudukan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Kesehatan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Kesehatan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Keuangan_Negara -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Keuangan_Negara">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Moneter -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Moneter">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Moneter_Lanjut -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Moneter_Lanjut">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Pembangunan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Pembangunan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Pembangunan_SWD -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Pembangunan_SWD">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Perkotaan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Perkotaan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Pertanian -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Pertanian">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Politik -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Politik">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Regional -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Regional">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_SDAL -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_SDAL">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_SDM_K -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_SDM_K">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Sektor_Publik -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Sektor_Publik">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Syariah -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Ekonomi_Syariah">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Experimental_Economics -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Experimental_Economics">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Factual -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Factual">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#KnowledgeCategory"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Isu_Terkini_EP -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Isu_Terkini_EP">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#KPAT -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#KPAT">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Kepemimpinan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Kepemimpinan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Kewirausahaan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Kewirausahaan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Koperasi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Koperasi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Literasi_dalam_B_Inggris -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Literasi_dalam_B_Inggris">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#MPK_A -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#MPK_A">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#MPK_Inggris -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#MPK_Inggris">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#MPK_T -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#MPK_T">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#MSPEB -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#MSPEB">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Makroekonomi_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Makroekonomi_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Makroekonomi_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Makroekonomi_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Manajemen_Keuangan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Manajemen_Keuangan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Matematika_Dasar_EB -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Matematika_Dasar_EB">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Matematika_Ekonomi_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Matematika_Ekonomi_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Meta_Cognitive -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Meta_Cognitive">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#KnowledgeCategory"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Mikroekonomi_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Mikroekonomi_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Mikroekonomi_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Mikroekonomi_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Model_Ekonomi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Model_Ekonomi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Organisasi_Industri -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Organisasi_Industri">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <OBE:belongsToCurr rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#S1_IE_UI_Curriculum_2020"/>
+        <OBE:hasDomain rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#C2_Understand"/>
+        <OBE:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PEO_1</OBE:code>
+        <OBE:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are aware of ethics and social responsibility</OBE:description>
+        <OBE:nqfAuthorityResposibility rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KKNI aspek kewenangan dan tanggung jawab: Mampu mengambil keputusan yang tepat berdasarkan analisis  informasi dan data, dan mampu memberikan petunjuk dalam memilih berbagai alternatif solusi secara mandiri dan kelompok</OBE:nqfAuthorityResposibility>
+        <OBE:nsAttitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SN Dikti Sikap</OBE:nsAttitude>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are aware of the global societal environment and its relationship to local society</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students have good communication skill</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to demonstrate critical and integrative thinking</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students demonstrate knowledge in theories of economics</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to apply advanced quantitative methods by using appropriate tools</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_B -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_B">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramEducationalObjective"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students understand basic business and economic concept</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_1_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_1_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_1"/>
+        <OBE:ploHasCourse rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Manajemen"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to demonstrate knowledge of relevant social and ethical 
+considerations</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_1_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_1_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_1"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are sensitive to cultural diversities and to the impact on societies and environment</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_2_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_2_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_2_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_2_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_3_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_3_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_3"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to communicate clearly and concisely in presentation and 
+discussion</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_3_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_3_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_3"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to write a clear and concise essay/report</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_4_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_4_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_4"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to analyse  and draw conclussions supported by appropriate evidence</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_5_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_5_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_5"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to demonstrate knowledge in theories of Economics</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_5_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_5_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_5"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to apply basic theories of Finance &amp; Financial Management</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_6_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_6_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_6"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to apply basic quantitative methods by using appropriate tools</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_B"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to explain basic theories of business and general management</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_B"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to demonstrate knowledge in Basic Economics</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_B"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to demonstrate knowledge in Cooperative</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#ProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_B"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Students are able to apply accounting principles to transactions and other events</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PSE_Indonesia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PSE_Indonesia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Akuntansi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Akuntansi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Bisnis -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Bisnis">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Ekonometri -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Ekonometri">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Ekonomi_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Ekonomi_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Ekonomi_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Ekonomi_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Game_Theory -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Game_Theory">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Manajemen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Pengantar_Manajemen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Perekonomian_Indonesia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Perekonomian_Indonesia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Procedural -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Procedural">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#KnowledgeCategory"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#S1_IE_UI -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#S1_IE_UI">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#StudyProgram"/>
+        <OBE:hasCurriculum rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#S1_IE_UI_Curriculum_2020"/>
+        <OBE:spName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bachelor of Economics Universitas Indonesia</OBE:spName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#S1_IE_UI_Curriculum_2020 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#S1_IE_UI_Curriculum_2020">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Curriculum"/>
+        <OBE:belongsToSP rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#S1_IE_UI"/>
+        <OBE:hasPEO rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_1"/>
+        <OBE:hasPEO rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_2"/>
+        <OBE:hasPEO rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_3"/>
+        <OBE:hasPEO rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_4"/>
+        <OBE:hasPEO rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_5"/>
+        <OBE:hasPEO rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_6"/>
+        <OBE:hasPEO rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PEO_B"/>
+        <OBE:curriculumName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bachelor of Economics UI Curriculum 2020</OBE:curriculumName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Sejarah_Pemikiran_Ekonomi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Sejarah_Pemikiran_Ekonomi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Seminar_KA -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Seminar_KA">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Sistem_Ekonomi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Sistem_Ekonomi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Skripsi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Skripsi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Statistika_EB -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Statistika_EB">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Statistika_Lanjutan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Statistika_Lanjutan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_1_1_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_1_1_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_1_1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_1_1_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_1_1_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B1_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B1_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+        <OBE:partOf rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#PLO_B1"/>
+        <OBE:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Able to explain the various ways that organizations may be designed and 
+structured.</OBE:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B1_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B1_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B1_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B1_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B1_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B1_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B2_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B2_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B2_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B2_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B3_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B3_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B3_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B3_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B4_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B4_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B4_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubPLO_B4_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Sub_PLO_B1_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Sub_PLO_B1_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#SubProgramLearningOutcome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ami/ontologies/2024/0/OBE#TPAPKB -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#TPAPKB">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#Course"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V2/SLO">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V2/PEO">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">R1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#partOf"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V2/SLO"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V2/PEO"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE#hasPart"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V2/PEO"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/ami/ontologies/2024/0/OBE_Ont_V2/SLO"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
